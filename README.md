@@ -28,3 +28,15 @@
 | Hosting          | Old laptop (Intel i5, 8GB RAM) |
 
 ---
+## 📂 Scripts
+
+Inside `/scripts`:
+
+- `ssh_hardening.sh`: disables root login, enables key-only authentication
+
+```bash
+#!/bin/bash
+# ssh_hardening.sh
+sed -i 's/PermitRootLogin yes/PermitRootLogin no/' /etc/ssh/sshd_config
+sed -i 's/#PasswordAuthentication yes/PasswordAuthentication no/' /etc/ssh/sshd_config
+systemctl restart sshd
